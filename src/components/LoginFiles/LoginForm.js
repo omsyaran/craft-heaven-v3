@@ -19,6 +19,11 @@ function LoginForm(){
         setUser(currentUser);
     });
 
+    const submitHandler = e => {
+        e.preventDefault();
+        login();
+    }
+
     const login = async () => {
         try{
             const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
@@ -36,7 +41,7 @@ function LoginForm(){
         <div className="body">
             <img className='logo' src={weblogo} alt="CraftHeaven logo"/>
             <img className='candles' src={candlepic} alt="Candlepic"/>
-            <div className="form">
+            <form onSubmit={submitHandler}>
                 <div className="form-inner">
                     <div className="form-group">
                         <img className='user-logo' src={emaillogo} alt="Email logo"/>
@@ -48,11 +53,12 @@ function LoginForm(){
                         <input size="47" className="inputs" type="password" name="login-password" id="login-password" placeholder="Password"  onChange={(event) => {setLoginPassword(event.target.value);}}/>
                     </div>
                     <br></br>
-                    <button onClick={login}>Login</button>
+                    <input type="submit" value="Sign In"/>
+                    <br></br>
                     <button onClick={logout}>Sign out</button>
                     <h6 className="register-opt">User registered in : </h6>{user?.email}
                 </div>
-            </div>
+            </form>
         </div>
     );
 }
@@ -60,3 +66,4 @@ function LoginForm(){
 export default LoginForm;
 
 // registered account : pavi@gmail.com      pword:123456
+// <button onClick={logout}>Sign out</button>
