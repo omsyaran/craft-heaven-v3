@@ -13,6 +13,11 @@ function LoginForm(){
         setUser(currentUser);
     });
 
+    const submitHandler = e => {
+        e.preventDefault();
+        login();
+    }
+
     const login = async () => {
         try{
             const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
@@ -22,16 +27,27 @@ function LoginForm(){
         }    
     };
 
+
     return(
+        <form onSubmit={submitHandler}>
+            <input placeholder=" Email..." onChange={(event) => {setLoginEmail(event.target.value);}}/>
+            <input placeholder=" Password.."  onChange={(event) => {setLoginPassword(event.target.value);}}/>
+            <input type="submit" value="Sign In"/>
+            <h4>User registered in : </h4>{user?.email}
+        </form>
+    );
+}
+
+export default LoginForm;
+
+
+
+/*
         <div>
             <h3> Login Here </h3>
             <input placeholder=" Email..." onChange={(event) => {setLoginEmail(event.target.value);}}/>
             <input placeholder=" Password.."  onChange={(event) => {setLoginPassword(event.target.value);}}/>
             <button onClick={login}>Login</button>
-            <h4>User registered in : </h4>
-            {user?.email}
+            <h4>User registered in : </h4>{user?.email}
         </div>
-    );
-}
-
-export default LoginForm;
+*/
