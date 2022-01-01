@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.logo{
+    position: absolute;
+    top:15px;
+    left:15px;
+}
+
+.user-logo{
+    position: absolute;
+    top:36px;
+    left:36px;
+}
+
+.passkey-logo{
+    position: absolute;
+    top:108px;
+    left:37px;
+}
+
+.candles{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    width:60%;
+    position: absolute;
+    right: 0px;
+    height: 100%;
+}
+
+input[type="text"]{
+    color: #555;
+    border-radius: 8px;
+    padding-left: 30px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    font-style: bold;
+    font-weight: 400;
+    margin-block-end: 15px;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline:none;
+}
+
+input[type="password"]{
+    color: #555;
+    border-radius: 8px;
+    padding-left: 32px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    font-style: bold;
+    font-weight: 400;
+    margin-block-end: 15px;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline:none;
+}
+
+input[type="text"]:focus, [type="password"]:focus{
+    border: 3px solid #555;
+}
+
+
+
