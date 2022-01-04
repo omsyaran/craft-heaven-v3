@@ -11,13 +11,13 @@
   left: 15px;
 }
 
-.email-logo {
+.form-inner .email-logo {
   position: absolute;
   top: 7px;
   left: 10px;
 }
 
-.passkey-logo {
+.form-inner .passkey-logo {
   position: absolute;
   top: 78px;
   left: 10px;
@@ -26,7 +26,7 @@
 .candles {
   background-attachment: fixed;
   background-repeat: no-repeat;
-  width: 60%;
+  width: 70%;
   position: absolute;
   right: 0px;
   height: 100%;
@@ -44,7 +44,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: thick solid black;
+  border-bottom: thick solid rgb(179, 174, 174);
 }
 
 .seller-form {
@@ -100,9 +100,8 @@ input[type="text"]:focus,
 
 .form {
   display: block;
-  position: absolute;
-  top: 270px;
-  left: 100px;
+  position: relative;
+  margin-top: 100px;
 }
 
 .form .form-inner {

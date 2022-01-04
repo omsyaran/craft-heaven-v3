@@ -80,10 +80,10 @@ const Login = ({ history }) => {
             {loading ? "Logging you in ..." : "Login"}
           </button>
           <br></br>
+          <div className="m-5">
+            <Link to="/signup">Don't have an account?</Link>
+          </div>
         </div>
-      </div>
-      <div className="m-5">
-        <Link to="/signup">Don't have an account?</Link>
       </div>
     </div>
   );
