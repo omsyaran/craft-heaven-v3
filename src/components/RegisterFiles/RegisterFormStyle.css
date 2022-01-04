@@ -20,6 +20,39 @@
     height: 100%;
 }
 
+.fname-logo{
+    position: absolute;
+    top: 6px;
+    left: 9px;
+}
+
+.lname-logo{
+    position: absolute;
+    top:77px;
+    left: 9px;
+}
+
+.username-logo{
+    position: absolute;
+    top: 150px;
+    left: 9px;
+}
+
+
+.email-logo{
+    position: absolute;
+    top: 221px;
+    left: 9px;
+    
+}
+
+.passkey-logo{
+    position: absolute;
+    top: 292px;
+    left: 9px;
+    
+}
+
 input[type="text"], [type="password"]{
     color: #555;
     border-radius: 8px;

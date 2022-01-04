@@ -6,7 +6,7 @@ import { signOut } from "firebase/auth";
 import './LoginFormStyle.css';
 import weblogo from './logo-icon.svg';
 import candlepic from './candle.jpg';
-import emaillogo from './user.svg';
+import emaillogo from './email.svg';
 import passkey from './pass-key.svg';
 
 function LoginForm(){
@@ -53,7 +53,7 @@ function LoginForm(){
             <form onSubmit={submitHandler}>
                 <div className="form-inner">
                     <div className="form-group">
-                        <img className='user-logo' src={emaillogo} alt="Email logo"/>
+                        <img className='email-logo' src={emaillogo} alt="Email logo"/>
                         <input size="20" classname='inputs' type="text" name="login-email" id="login-email" placeholder="Email" onChange={(event) => {setLoginEmail(event.target.value);}}/>
                     </div>
                     <br></br>

@@ -5,6 +5,11 @@ import { onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import candlepic from './candle.jpg';
 import weblogo from './logo-icon.svg';
+import emaillogo from './email.svg';
+import passkey from './pass-key.svg';
+import fname from './flname.svg';
+import lname from './flname.svg';
+import username from './user.svg';
 import './RegisterFormStyle.css';
 
 function RegisterForm(){
@@ -49,22 +54,27 @@ function RegisterForm(){
         <form onSubmit={submitHandler}>
             <div className="form-inner">
                 <div className="form-group">
+                    <img className='fname-logo' src={fname} alt="Fname-logo"/>
                     <input size="20" classname='inputs' type="text" name="fname" id="fname" placeholder="First Name" />
                 </div>
                 <br></br>
                 <div className="form-group">
+                    <img className='lname-logo' src={lname} alt="lname-logo"/>  
                     <input size="20" classname='inputs' type="text" name="lname" id="lname" placeholder="Last Name" />
                 </div>
                 <br></br>
                 <div className="form-group">
+                    <img className='username-logo' src={username} alt="username-logo"/>  
                     <input size="20" classname='inputs' type="text" name="username" id="username" placeholder="Username" />
                 </div>
                 <br></br>
                 <div className="form-group">
+                    <img className='email-logo' src={emaillogo} alt="Email logo"/>
                     <input size="20" classname='inputs' type="text" name="login-email" id="login-email" placeholder="Email" onChange={(event) => {setRegisterEmail(event.target.value);}}/>
                 </div>
                 <br></br>
                 <div className="form-group">
+                    <img className='passkey-logo' src={passkey} alt="Password logo"/> 
                     <input size="20" className="inputs" type="password" name="login-password" id="login-password" placeholder="Password"  onChange={(event) => {setRegisterPassword(event.target.value);}}/>
                 </div>
                 <br></br>
