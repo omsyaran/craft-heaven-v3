@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import LoginForm from './components/LoginFiles/LoginForm';
-import RegisterForm from './components/RegisterFiles/RegisterForm';
+import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RegisterForm />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -16,5 +15,3 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-// <LoginForm />
