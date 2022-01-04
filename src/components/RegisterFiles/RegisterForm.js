@@ -16,7 +16,7 @@ function RegisterForm(){
 
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
-    
+
     const [user, setUser] = useState({});
 
     onAuthStateChanged(auth, (currentUser) => {
@@ -52,6 +52,8 @@ function RegisterForm(){
         <img className='logo' src={weblogo} alt="CraftHeaven logo"/>
         <img className='candles' src={candlepic} alt="Candlepic"/>
         <form onSubmit={submitHandler}>
+            <p className="title">Customer Sign Up</p>
+            <br></br>
             <div className="form-inner">
                 <div className="form-group">
                     <img className='fname-logo' src={fname} alt="Fname-logo"/>
@@ -82,8 +84,6 @@ function RegisterForm(){
                 <br></br>
             </div>
         </form>
-        <h5 className="register-opt">Signed in user : {user?.email}</h5>
-        <button className="testing-btn" onClick={logoutHandle}>Sign out [ testing-purpose ] </button>
     </div>
         
     );

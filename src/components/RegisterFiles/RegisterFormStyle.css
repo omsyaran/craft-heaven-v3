@@ -11,10 +11,15 @@
     left:15px;
 }
 
+.title{
+    font-weight: 500;
+    font-size: 24px;
+}
+
 .candles{
     background-attachment: fixed;
     background-repeat: no-repeat;
-    width:60%;
+    width:50%;
     position: absolute;
     right: 0px;
     height: 100%;
@@ -76,7 +81,7 @@ form{
     display: block;
     position:absolute;
     top:170px;
-    left: 90px;
+    left: 140px;
 }
 
 form .form-inner{
