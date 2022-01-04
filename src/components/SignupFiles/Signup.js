@@ -40,18 +40,18 @@ const Signup = ({ history }) => {
       .finally(() => setLoading(false));
   };
   return (
-    <div className="body">
+    <div className="signup-body">
       <img className="logo" src={weblogo} alt="CraftHeaven logo" />
       <img className="candles" src={candlepic} alt="Candlepic" />
-      <div className="form">
-        <p className="title">Customer Sign Up</p>
+      <div className="signup-form">
+        <p className="signup-title">Customer Sign Up</p>
         <br></br>
-        <div className="form-inner">
-          <div className="form-group">
+        <div className="signup-form-inner">
+          <div className="signup-form-group">
             <img className="fname-logo" src={fname} alt="Fname-logo" />
             <input
-              size="20"
-              classname="inputs"
+              size="47"
+              classname="signup-inputs"
               type="text"
               name="fname"
               id="fname"
@@ -59,11 +59,11 @@ const Signup = ({ history }) => {
             />
           </div>
           <br></br>
-          <div className="form-group">
+          <div className="signup-form-group">
             <img className="lname-logo" src={lname} alt="lname-logo" />
             <input
-              size="20"
-              classname="inputs"
+              size="47"
+              classname="signup-inputs"
               type="text"
               name="lname"
               id="lname"
@@ -71,11 +71,11 @@ const Signup = ({ history }) => {
             />
           </div>
           <br></br>
-          <div className="form-group">
+          <div className="signup-form-group">
             <img className="username-logo" src={username} alt="username-logo" />
             <input
-              size="20"
-              classname="inputs"
+              size="47"
+              className="signup-inputs"
               type="text"
               name="name"
               id="username"
@@ -87,12 +87,16 @@ const Signup = ({ history }) => {
             />
           </div>
           <br></br>
-          <div className="form-group">
-            <img className="email-logo" src={emaillogo} alt="Email logo" />
+          <div className="signup-form-group">
+            <img
+              className="signup-email-logo"
+              src={emaillogo}
+              alt="Email logo"
+            />
             <input
-              size="20"
-              classname="inputs"
-              type="email"
+              size="47"
+              className="signup-inputs"
+              type="text"
               name="email"
               id="login-email"
               value={email}
@@ -103,11 +107,15 @@ const Signup = ({ history }) => {
             />
           </div>
           <br></br>
-          <div className="form-group">
-            <img className="passkey-logo" src={passkey} alt="Password logo" />
+          <div className="signup-form-group">
+            <img
+              className="signup-passkey-logo"
+              src={passkey}
+              alt="Password logo"
+            />
             <input
-              size="20"
-              className="inputs"
+              size="47"
+              className="signup-inputs"
               type="password"
               name="password"
               id="login-password"
@@ -119,13 +127,19 @@ const Signup = ({ history }) => {
             />
           </div>
           <br></br>
-          <button onClick={onSignup} value="Register Account">
-            {loading ? "Creating user ..." : "Signup"}{" "}
+          <button
+            className="signup-btn"
+            onClick={onSignup}
+            value="Register Account"
+          >
+            {loading ? "Signing" : "Sign up"}{" "}
           </button>
           <br></br>
-        </div>
-        <div className="m-5">
-          <Link to="/">Already have an account?</Link>
+          <div className="login-link">
+            <Link to="/" style={{ textDecoration: "none" }}>
+              Already have an account?
+            </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -133,17 +147,3 @@ const Signup = ({ history }) => {
 };
 
 export default Signup;
-
-/*
-    <div>
-            <h3> Register New User Here </h3>
-            <input placeholder=" Email..." onChange={(event) => {setRegisterEmail(event.target.value);}}/>
-            <input placeholder=" Password.." onChange={(event) => {setRegisterPassword(event.target.value);}}/>
-            <button onClick={register}>Register</button>
-            <h4>User registered in : </h4>
-            {user?.email}
-            <button onClick={logout}>Sign out</button>
-    </div>
-
-
-*/

@@ -35,20 +35,21 @@ const Login = ({ history }) => {
   };
 
   return (
-    <div className="body">
+    <div className="login-body">
       <img className="logo" src={weblogo} alt="CraftHeaven logo" />
       <img className="candles" src={candlepic} alt="Candlepic" />
       <div>
         <button className="cust-form">Customer</button>
         <button className="seller-form">Seller</button>
       </div>
-      <div className="form">
-        <div className="form-inner">
-          <div className="form-group">
+      <div className="login-form">
+        <p className="login-title">Login</p>
+        <div className="login-form-inner">
+          <div className="login-form-group">
             <img className="email-logo" src={emaillogo} alt="Email logo" />
             <input
-              size="20"
-              classname="inputs"
+              size="47"
+              classname="login-inputs"
               type="email"
               name="email"
               id="login-email"
@@ -60,11 +61,11 @@ const Login = ({ history }) => {
             />
           </div>
           <br></br>
-          <div className="form-group">
+          <div className="login-form-group">
             <img className="passkey-logo" src={passkey} alt="Password logo" />
             <input
-              size="20"
-              className="inputs"
+              size="47"
+              className="login-inputs"
               type="password"
               name="password"
               id="login-password"
@@ -77,11 +78,13 @@ const Login = ({ history }) => {
           </div>
           <br></br>
           <button className="login-btn" onClick={onLogin} value="Sign In">
-            {loading ? "Logging you in ..." : "Login"}
+            {loading ? "Load.." : "Log In"}
           </button>
           <br></br>
-          <div className="m-5">
-            <Link to="/signup">Don't have an account?</Link>
+          <div className="signup-link">
+            <Link to="/signup" style={{ textDecoration: "none" }}>
+              Don't have an account?
+            </Link>
           </div>
         </div>
       </div>

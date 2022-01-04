@@ -11,13 +11,20 @@
   left: 15px;
 }
 
-.form-inner .email-logo {
+.login-title {
+  font-weight: 500;
+  font-size: 24px;
+  position: absolute;
+  top: -60px;
+}
+
+.login-form-inner .email-logo {
   position: absolute;
   top: 7px;
   left: 10px;
 }
 
-.form-inner .passkey-logo {
+.login-form-inner .passkey-logo {
   position: absolute;
   top: 78px;
   left: 10px;
@@ -26,7 +33,7 @@
 .candles {
   background-attachment: fixed;
   background-repeat: no-repeat;
-  width: 70%;
+  width: 50%;
   position: absolute;
   right: 0px;
   height: 100%;
@@ -60,7 +67,7 @@
   border-left: none;
   border-right: none;
   border-bottom: none;
-  /* border-bottom: thick solid black; */
+  /*  border-bottom: thick rgb(179, 174, 174); */
 }
 
 input[type="email"] {
@@ -93,28 +100,29 @@ input[type="password"] {
   outline: none;
 }
 
-input[type="text"]:focus,
+input[type="email"]:focus,
 [type="password"]:focus {
   border: 3px solid #555;
 }
 
-.form {
+.login-form {
   display: block;
   position: relative;
-  margin-top: 100px;
+  margin-top: 240px;
+  margin-left: 140px;
 }
 
-.form .form-inner {
-  position: relative;
+.login-form .login-form-inner {
+  position: absolute;
   display: block;
   background-color: white;
 }
 
-.form .form-inner .form-group {
+.login-form .login-form-inner .login-form-group {
   display: block;
 }
 
-.form .form-inner .form-group input {
+.login-form .login-form-inner .login-form-group input {
   display: block;
   width: 100%;
   padding-left: 40px;
@@ -127,7 +135,7 @@ input[type="text"]:focus,
   display: inline-block;
   padding: 10px 20px;
   border-radius: 8px;
-  margin-left: 282px;
+  margin-left: 305px;
   margin-top: 15px;
   background-color: black;
   color: white;
