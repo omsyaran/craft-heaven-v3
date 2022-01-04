@@ -100,7 +100,7 @@ input[type="text"]:focus, [type="password"]:focus{
 form{
     display: block;
     position:absolute;
-    top:250px;
+    top:300px;
     left: 100px;
 }
 
