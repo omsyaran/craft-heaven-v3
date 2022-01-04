@@ -33,6 +33,11 @@ function LoginForm(){
         }    
     };
 
+    const logoutHandle = e => {
+        e.preventDefault();
+        logout();
+    }
+
     const logout = async () => {
         await signOut(auth);
     }
@@ -41,26 +46,30 @@ function LoginForm(){
         <div className="body">
             <img className='logo' src={weblogo} alt="CraftHeaven logo"/>
             <img className='candles' src={candlepic} alt="Candlepic"/>
+            <div>
+                <button className='cust-form'>Customer</button>
+                <button className='seller-form'>Seller</button>
+             </div>
             <form onSubmit={submitHandler}>
                 <div className="form-inner">
                     <div className="form-group">
                         <img className='user-logo' src={emaillogo} alt="Email logo"/>
-                        <input size="47" classname='inputs' type="text" name="login-email" id="login-email" placeholder="Email" onChange={(event) => {setLoginEmail(event.target.value);}}/>
+                        <input size="20" classname='inputs' type="text" name="login-email" id="login-email" placeholder="Email" onChange={(event) => {setLoginEmail(event.target.value);}}/>
                     </div>
                     <br></br>
                     <div className="form-group">
                         <img className='passkey-logo' src={passkey} alt="Password logo"/>
-                        <input size="47" className="inputs" type="password" name="login-password" id="login-password" placeholder="Password"  onChange={(event) => {setLoginPassword(event.target.value);}}/>
+                        <input size="20" className="inputs" type="password" name="login-password" id="login-password" placeholder="Password"  onChange={(event) => {setLoginPassword(event.target.value);}}/>
                     </div>
                     <br></br>
                     <input type="submit" value="Sign In"/>
                     <br></br>
-                    <button onClick={logout}>Sign out</button>
-                    <h6 className="register-opt">User registered in : </h6>{user?.email}
                 </div>
             </form>
+            <h5 className="register-opt">Signed in user : {user?.email}</h5>
+            <button className="testing-btn" onClick={logoutHandle}>Sign out [ testing-purpose ] </button>
         </div>
-    );
+    )
 }
 
 export default LoginForm;

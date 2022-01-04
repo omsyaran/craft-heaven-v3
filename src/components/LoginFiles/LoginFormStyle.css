@@ -13,14 +13,14 @@
 
 .user-logo{
     position: absolute;
-    top:36px;
-    left:36px;
+    top:7px;
+    left:10px;
 }
 
 .passkey-logo{
     position: absolute;
-    top:108px;
-    left:37px;
+    top:78px;
+    left:10px;
 }
 
 .candles{
@@ -32,10 +32,41 @@
     height: 100%;
 }
 
+.cust-form{
+    position: relative;
+    left:140px;
+    top:142px;
+    font-size: 18px;
+    padding-left:10px ;
+    padding-right:10px ;
+    padding-top:5px ;
+    padding-bottom:5px ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: thick solid black;
+}
+
+.seller-form{
+    position: relative;
+    left:180px;
+    top:142px;
+    font-size: 18px;
+    padding-left:10px ;
+    padding-right:10px ;
+    padding-top:5px ;
+    padding-bottom:5px ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+   /* border-bottom: thick solid black; */
+}
+
 input[type="text"]{
     color: #555;
     border-radius: 8px;
-    padding-left: 30px;
+    padding-left: 32px;
     padding-bottom: 8px;
     padding-top: 8px;
     font-style: bold;
@@ -66,5 +97,54 @@ input[type="text"]:focus, [type="password"]:focus{
     border: 3px solid #555;
 }
 
+form{
+    display: block;
+    position:absolute;
+    top:250px;
+    left: 100px;
+}
 
+form .form-inner{
+    position: relative;
+    display: block;
+    background-color:white;
+    
+}
 
+form .form-inner .form-group{
+    display: block;
+}
+
+form .form-inner .form-group input{
+    display: block;
+    width: 100%;
+    padding-left: 40px;
+    background-color: white;
+    border-radius: 8px;
+    transition: 0.4s;
+}
+
+form .form-inner input[type="submit"]{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-left: 282px;
+    margin-top: 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 17px;
+}
+
+.register-opt{
+    position: absolute;
+    top: 600px;
+    left: 30px;
+    color: #555;
+}
+
+.testing-btn{
+    position: absolute;
+    top: 650px;
+    left: 30px;
+}
