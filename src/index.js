@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginForm from './components/LoginFiles/LoginForm';
+//import LoginForm from './components/LoginFiles/LoginForm';
 import RegisterForm from './components/RegisterFiles/RegisterForm';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
