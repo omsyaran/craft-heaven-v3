@@ -8,9 +8,43 @@ import username from "./user.svg";
 import phonenum from "./phone-logo.svg";
 import storelogo from "./store-logo.svg";
 import { Link } from "react-router-dom";
+import { initilizeFirebase } from "../SignUp/firebase";
+import { getDatabase, set, ref } from "firebase/database";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const SellerSignup = () => {
-  const onSellerSignup = () => {}; // haven't define yet
+  const app = initilizeFirebase();
+  const db = getDatabase(app);
+  const auth = getAuth();
+
+  const onSellerSignup = () => {
+    var seller_username = document.getElementById("seller-username").value;
+    var seller_email = document.getElementById("seller-email").value;
+    var seller_password = document.getElementById("seller-password").value;
+    var seller_phonenum = document.getElementById("seller-phonenum").value;
+    var store_name = document.getElementById("store-name").value;
+
+    createUserWithEmailAndPassword(auth, seller_email, seller_password)
+      .then((userCredential) => {
+        // Seller signs in
+        const seller = userCredential.user;
+
+        set(ref(db, "Sellers/" + seller.uid), {
+          seller_username: seller_username,
+          seller_email: seller_email,
+          seller_phonenum: seller_phonenum,
+          store_name: store_name,
+        });
+        <Link to="/login" />;
+        alert("Seller information is created!");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.Message;
+        alert(errorMessage);
+      });
+  }; // end of the onSellerSignup function
 
   return (
     <div className="seller-signup-body">
@@ -38,7 +72,7 @@ const SellerSignup = () => {
               className="signup-inputs"
               type="text"
               name="name"
-              id="username"
+              id="seller-username"
               placeholder="Username"
             />
           </div>
@@ -54,7 +88,7 @@ const SellerSignup = () => {
               className="signup-inputs"
               type="text"
               name="email"
-              id="email"
+              id="seller-email"
               placeholder="Email"
             />
           </div>
@@ -70,7 +104,7 @@ const SellerSignup = () => {
               className="signup-inputs"
               type="password"
               name="password"
-              id="password"
+              id="seller-password"
               placeholder="Password"
             />
           </div>
@@ -86,7 +120,7 @@ const SellerSignup = () => {
               className="signup-inputs"
               type="tel"
               name="phonenum"
-              id="phonenum"
+              id="seller-phonenum"
               placeholder="Phone number"
               pattern="^(\+?6?01)[0-46-9]-*[0-9]{7,8}$"
             />
