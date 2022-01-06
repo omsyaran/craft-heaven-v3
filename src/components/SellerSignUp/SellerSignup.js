@@ -18,7 +18,13 @@ const SellerSignup = () => {
       <p className="logo-title">Craft Haven</p>
       <img className="candles" src={candlepic} alt="Candlepic" />
       <div className="seller-signup-form">
-        <p className="signup-title">Seller Sign Up</p>
+        <p className="signup-title">Start your bussiness on Craft Haven now!</p>
+        <br></br>
+        <p className="seller-signup-desc">
+          Please make sure that you have active bussiness license and
+          registration in order to sell on this Craft Haven platform.
+        </p>
+        <br></br>
         <br></br>
         <p className="signup-seller">
           Sign up as customer instead? <a href="#">Signup Here</a>
