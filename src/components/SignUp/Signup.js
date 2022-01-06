@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import React from "react";
+import "./SignupStyle.css";
 import candlepic from "./candle.jpg";
 import weblogo from "./logo-icon.svg";
 import emaillogo from "./email.svg";
@@ -7,50 +7,63 @@ import passkey from "./pass-key.svg";
 import fname from "./flname.svg";
 import lname from "./flname.svg";
 import username from "./user.svg";
-import "./SignupStyle.css";
-import React from "react";
-import { useEffect } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { getAuth } from "firebase/auth";
-import { updateProfile } from "firebase/auth";
+import { initilizeFirebase } from "./firebase";
+import { getDatabase, ref, set } from "firebase/database";
 import { Link } from "react-router-dom";
 
-const Signup = ({ history }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+const Signup = () => {
+  const app = initilizeFirebase();
+  const db = getDatabase(app);
+  const auth = getAuth();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      history.push("/dashboard");
-    }
-  }, []);
+  const onSignUp = () => {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var username = document.getElementById("username").value;
 
-  const onSignup = () => {
-    setLoading(true);
-    const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        updateProfile(auth.currentUser, { displayName: name })
-          .then(() => history.push("/"))
-          .catch((e) => alert(e.message));
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+
+        set(ref(db, "Customers/" + user.uid), {
+          username: username,
+          email: email,
+        });
+
+        <Link to="/login" />;
+
+        alert("user created!");
+        // ...
       })
-      .catch((e) => alert(e.message))
-      .finally(() => setLoading(false));
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(errorMessage);
+        // ..
+      });
   };
+
   return (
     <div className="signup-body">
       <img className="logo" src={weblogo} alt="CraftHeaven logo" />
+      <p className="logo-title">Craft Haven</p>
       <img className="candles" src={candlepic} alt="Candlepic" />
       <div className="signup-form">
-        <p className="signup-title">Customer Sign Up</p>
+        <p className="signup-title">Sign Up</p>
+        <br></br>
+        <p className="signup-seller">
+          Do you want to become a seller? <a href="#">Register Here</a>
+        </p>
         <br></br>
         <div className="signup-form-inner">
           <div className="signup-form-group">
             <img className="fname-logo" src={fname} alt="Fname-logo" />
             <input
-              size="47"
+              size="60"
               classname="signup-inputs"
               type="text"
               name="fname"
@@ -62,7 +75,7 @@ const Signup = ({ history }) => {
           <div className="signup-form-group">
             <img className="lname-logo" src={lname} alt="lname-logo" />
             <input
-              size="47"
+              size="60"
               classname="signup-inputs"
               type="text"
               name="lname"
@@ -74,16 +87,12 @@ const Signup = ({ history }) => {
           <div className="signup-form-group">
             <img className="username-logo" src={username} alt="username-logo" />
             <input
-              size="47"
+              size="60"
               className="signup-inputs"
               type="text"
               name="name"
               id="username"
-              value={name}
               placeholder="Username"
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
             />
           </div>
           <br></br>
@@ -94,16 +103,12 @@ const Signup = ({ history }) => {
               alt="Email logo"
             />
             <input
-              size="47"
+              size="60"
               className="signup-inputs"
               type="text"
               name="email"
-              id="login-email"
-              value={email}
+              id="email"
               placeholder="Email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
             />
           </div>
           <br></br>
@@ -114,32 +119,30 @@ const Signup = ({ history }) => {
               alt="Password logo"
             />
             <input
-              size="47"
+              size="60"
               className="signup-inputs"
               type="password"
               name="password"
-              id="login-password"
-              value={password}
+              id="password"
               placeholder="Password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
             />
           </div>
+          <p className="signup-seller">
+            Already have an account?{" "}
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              Log In
+            </Link>
+          </p>
           <br></br>
           <button
             className="signup-btn"
-            onClick={onSignup}
             value="Register Account"
+            onClick={onSignUp}
           >
-            {loading ? "Signing" : "Sign up"}{" "}
+            {" "}
+            Sign Up
           </button>
           <br></br>
-          <div className="login-link">
-            <Link to="/" style={{ textDecoration: "none" }}>
-              Already have an account?
-            </Link>
-          </div>
         </div>
       </div>
     </div>
