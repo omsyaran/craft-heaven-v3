@@ -4,7 +4,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBE4YENtriHkVh5Gbucyy4ipINyIzR4RHk",
   authDomain: "crafthaven-om.firebaseapp.com",
   databaseURL:
-    "https://crafthaven-om-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    "https://crafthaven-om-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "crafthaven-om",
   storageBucket: "crafthaven-om.appspot.com",
   messagingSenderId: "882716555478",

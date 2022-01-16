@@ -125,7 +125,7 @@ const SellerSignup = () => {
               name="phonenum"
               id="seller-phonenum"
               placeholder="Phone number"
-              pattern="^(\+?6?01)[0-46-9]-*[0-9]{7,8}$"
+              //pattern="^(\+?6?01)[0-46-9]-*[0-9]{7,8}$"
             />
           </div>
           <br></br>
