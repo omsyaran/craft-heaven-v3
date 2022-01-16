@@ -15,15 +15,20 @@
   font-weight: 500;
   font-size: 30px;
   position: absolute;
-  top: -65px;
+  top: -90px;
 }
 
 .seller-signup-desc {
   font-weight: 400;
   font-size: 15px;
   position: absolute;
-  top: -5px;
+  top: -25px;
   color: #555;
+}
+
+.signup-seller {
+  position: relative;
+  top: -30px;
 }
 
 .logo-title {
@@ -76,7 +81,8 @@
 input[type="text"],
 [type="email"],
 [type="password"],
-[type="tel"] {
+[type="tel"],
+[type="file"] {
   color: #555;
   border-radius: 8px;
   padding-left: 32px;
@@ -85,7 +91,7 @@ input[type="text"],
   font-style: bold;
   font-weight: 400;
   font-size: medium;
-  margin-block-end: 15px;
+  margin-block-end: 7px;
   border: 3px solid #ccc;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -96,7 +102,8 @@ input[type="text"],
 input[type="text"]:focus,
 [type="email"]:focus,
 [type="password"]:focus,
-[type="tel"]:focus {
+[type="tel"]:focus,
+[type="file"]:focus {
   border: 3px solid black;
 }
 
@@ -111,6 +118,7 @@ input[type="text"]:focus,
   position: relative;
   display: block;
   background-color: white;
+  top: -10px;
 }
 
 .seller-signup-form .seller-signup-form-inner .seller-signup-form-group {

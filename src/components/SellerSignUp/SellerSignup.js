@@ -24,6 +24,7 @@ const SellerSignup = () => {
     var seller_password = document.getElementById("seller-password").value;
     var seller_phonenum = document.getElementById("seller-phonenum").value;
     var store_name = document.getElementById("store-name").value;
+    // need to store the image url and the date of creation.. [creation must be added at the backend]
 
     createUserWithEmailAndPassword(auth, seller_email, seller_password)
       .then((userCredential) => {
@@ -61,9 +62,11 @@ const SellerSignup = () => {
         <br></br>
         <br></br>
         <p className="signup-seller">
-          Sign up as customer instead? <a href="#">Signup Here</a>
+          Sign up as customer instead?{" "}
+          <a href="#" style={{ textDecoration: "none" }}>
+            Sign Up Here
+          </a>
         </p>
-        <br></br>
         <div className="seller-signup-form-inner">
           <div className="seller-signup-form-group">
             <img className="username-logo" src={username} alt="username-logo" />
@@ -141,7 +144,18 @@ const SellerSignup = () => {
               placeholder="Store Name"
             />
           </div>
-          <p className="signup-seller">
+          <br></br>
+          <div className="seller-signup-form-group">
+            <input
+              size="60"
+              className="signup-inputs"
+              type="file"
+              name="store-pic"
+              id="store-pic"
+            />
+          </div>
+          <br></br>
+          <p className="signup-seller2">
             Already have an account?{" "}
             <Link to="/login" style={{ textDecoration: "none" }}>
               Log In
