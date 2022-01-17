@@ -55,6 +55,7 @@ const SellerSignup = () => {
         const errorCode = error.code;
         const errorMessage = error.Message;
         alert(errorMessage);
+        alert(errorCode);
       });
   }; // end of the onSellerSignup function
 
