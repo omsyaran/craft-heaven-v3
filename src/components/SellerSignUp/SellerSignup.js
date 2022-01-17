@@ -8,24 +8,15 @@ import username from "./user.svg";
 import phonenum from "./phone-logo.svg";
 import storelogo from "./store-logo.svg";
 import { Link } from "react-router-dom";
-import { initilizeFirebase } from "../SignUp/firebase";
+import { initilizeFirebase, upload } from "../SignUp/firebase";
 import { getDatabase, set, ref } from "firebase/database";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getAuth } from "firebase/auth";
-import { getDownloadURL, getStorage, uploadBytes } from "firebase/storage";
-import { useState } from "react";
 
 const SellerSignup = () => {
   const app = initilizeFirebase();
   const db = getDatabase(app);
   const auth = getAuth();
-  const storage = getStorage();
-
-  async function upload(file, seller) {
-    const fileRef = ref(storage, "StorePhoto/" + seller.uid + ".jpg"); // the ref over here is from the database one. not the storage one
-    const snapshot = await uploadBytes(fileRef, file);
-    alert("Photo uploaded!");
-  }
 
   const onSellerSignup = () => {
     var seller_username = document.getElementById("seller-username").value;
@@ -40,7 +31,7 @@ const SellerSignup = () => {
         // Seller signs in
         const seller = userCredential.user;
 
-        //upload(store_pic, seller);
+        upload(store_pic, seller);
 
         set(ref(db, "Sellers/" + seller.uid), {
           seller_username: seller_username,
