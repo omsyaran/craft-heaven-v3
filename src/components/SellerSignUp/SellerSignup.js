@@ -8,15 +8,22 @@ import username from "./user.svg";
 import phonenum from "./phone-logo.svg";
 import storelogo from "./store-logo.svg";
 import { Link } from "react-router-dom";
-import { initilizeFirebase, upload } from "../SignUp/firebase";
-import { getDatabase, set, ref } from "firebase/database";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { initilizeFirebase } from "../SignUp/firebase";
+import { getDatabase, set, ref as database_ref } from "firebase/database";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { getAuth } from "firebase/auth";
+import {
+  uploadBytes,
+  getDownloadURL,
+  getStorage,
+  ref as storage_ref,
+} from "firebase/storage";
 
 const SellerSignup = () => {
   const app = initilizeFirebase();
   const db = getDatabase(app);
   const auth = getAuth();
+  const storage = getStorage(app);
 
   const onSellerSignup = () => {
     var seller_username = document.getElementById("seller-username").value;
@@ -25,22 +32,28 @@ const SellerSignup = () => {
     var seller_phonenum = document.getElementById("seller-phonenum").value;
     var store_name = document.getElementById("store-name").value;
     var store_pic = document.getElementById("store-pic").files[0];
-
     createUserWithEmailAndPassword(auth, seller_email, seller_password)
-      .then((userCredential) => {
-        // Seller signs in
+      .then(async (userCredential) => {
         const seller = userCredential.user;
-
-        upload(store_pic, seller);
-
-        set(ref(db, "Sellers/" + seller.uid), {
-          seller_username: seller_username,
-          seller_email: seller_email,
-          seller_phonenum: seller_phonenum,
-          store_name: store_name,
-        });
-        <Link to="/login" />;
-        alert("Seller information is created!");
+        const fileRef = storage_ref(
+          storage,
+          "StorePhoto/" + seller.uid + ".jpg"
+        );
+        const snapshot = await uploadBytes(fileRef, store_pic);
+        const photoURL = await getDownloadURL(fileRef);
+        alert(photoURL);
+        alert("Photo uploaded to storage");
+        setTimeout(() => {
+          set(database_ref(db, "Sellers/" + seller.uid), {
+            seller_username: seller_username,
+            seller_email: seller_email,
+            seller_phonenum: seller_phonenum,
+            store_name: store_name,
+            store_pic: photoURL,
+          });
+          <Link to="/login" />;
+          alert("Seller information is created!");
+        }, 5000);
       })
       .catch((error) => {
         const errorCode = error.code;

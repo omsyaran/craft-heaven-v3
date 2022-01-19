@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBE4YENtriHkVh5Gbucyy4ipINyIzR4RHk",
@@ -16,14 +15,6 @@ const firebaseConfig = {
 export const initilizeFirebase = () => {
   const app = initializeApp(firebaseConfig);
 };
-
-const app = initilizeFirebase();
-const storage = getStorage();
-export async function upload(file, seller) {
-  const fileRef = ref(storage, "StorePhoto/" + seller.uid + ".jpg"); // the ref over here is from the database one. not the storage one
-  const snapshot = await uploadBytes(fileRef, file);
-  alert("Photo uploaded!");
-}
 
 // kathe punya
 /* const firebaseConfig = {
