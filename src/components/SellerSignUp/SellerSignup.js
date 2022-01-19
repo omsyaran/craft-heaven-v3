@@ -41,25 +41,19 @@ const SellerSignup = () => {
         );
         const snapshot = await uploadBytes(fileRef, store_pic);
         const photoURL = await getDownloadURL(fileRef);
-        alert(photoURL);
-        alert("Photo uploaded to storage");
-        setTimeout(() => {
-          set(database_ref(db, "Sellers/" + seller.uid), {
-            seller_username: seller_username,
-            seller_email: seller_email,
-            seller_phonenum: seller_phonenum,
-            store_name: store_name,
-            store_pic: photoURL,
-          });
-          <Link to="/login" />;
-          alert("Seller information is created!");
-        }, 5000);
+
+        set(database_ref(db, "Sellers/" + seller.uid), {
+          seller_username: seller_username,
+          seller_email: seller_email,
+          seller_phonenum: seller_phonenum,
+          store_name: store_name,
+          store_pic: photoURL,
+        });
+        <Link to="/login" />;
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.Message;
-        alert(errorMessage);
-        alert(errorCode);
       });
   }; // end of the onSellerSignup function
 
