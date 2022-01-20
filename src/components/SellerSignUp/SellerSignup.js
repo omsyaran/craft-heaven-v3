@@ -32,6 +32,10 @@ const SellerSignup = () => {
     var seller_phonenum = document.getElementById("seller-phonenum").value;
     var store_name = document.getElementById("store-name").value;
     var store_pic = document.getElementById("store-pic").files[0];
+    var day = new Date();
+    var month = day.toLocaleString("default", { month: "long" });
+    var established_day = day.getDate() + " " + month + " " + day.getFullYear();
+
     createUserWithEmailAndPassword(auth, seller_email, seller_password)
       .then(async (userCredential) => {
         const seller = userCredential.user;
@@ -41,13 +45,13 @@ const SellerSignup = () => {
         );
         const snapshot = await uploadBytes(fileRef, store_pic);
         const photoURL = await getDownloadURL(fileRef);
-
         set(database_ref(db, "Sellers/" + seller.uid), {
           seller_username: seller_username,
           seller_email: seller_email,
           seller_phonenum: seller_phonenum,
           store_name: store_name,
           store_pic: photoURL,
+          store_established: established_day,
         });
         <Link to="/login" />;
       })
