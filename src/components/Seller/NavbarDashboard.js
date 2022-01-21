@@ -1,55 +1,40 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
 import sellerProfile from "../Seller/sellerProfile.png";
+import { getAuth } from "firebase/auth";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { initilizeFirebase } from "../SignUp/firebase";
 
 const NavbarDashboard = () => {
-  const location = useLocation();
+  const app = initilizeFirebase();
+  const db = getDatabase(app);
+  const auth = getAuth(app);
+  const SellerID = auth.currentUser.uid;
+
+  const getStorePic = ref(db, "Sellers/" + SellerID + "/store_pic");
+  onValue(getStorePic, (snapshot) => {
+    const StorePic = snapshot.val();
+    dummy_function1(StorePic);
+  });
+  const getStoreDate = ref(db, "Sellers/" + SellerID + "/store_established");
+  onValue(getStoreDate, (snapshot) => {
+    const StoreDate = snapshot.val();
+    dummy_function2(StoreDate);
+  });
+
+  function dummy_function1(StorePic) {
+    alert(StorePic);
+  }
+
+  function dummy_function2(StoreDate) {
+    alert(StoreDate);
+  }
 
   return (
-    <section className="container mt-3">
-      <div className="row">
-        <div className="col-md-6">
-          <div className="d-flex align-items-center">
-            <img src={sellerProfile} alt="Logo" width={139} />
-            <div className="flex-column">
-              <p className="silvia-text ms-4 d-block">Sivali Factory</p>
-              <p className="joined-text ms-4">Joined on : 20 Feb 2020</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-6 mt-5">
-          <div className="d-flex navigate">
-            <div className="border border-dark">
-              <Link
-                className={`btn ${
-                  location.pathname === "/add-product" ? "btn-dark" : ""
-                }`}
-                to="/add-product"
-              >
-                Add Product
-              </Link>
-              <Link
-                className={`btn ${
-                  location.pathname === "/my-product" ? "btn-dark" : ""
-                }`}
-                to="/my-product"
-              >
-                My Product
-              </Link>
-              <Link
-                className={`btn ${
-                  location.pathname === "/dashboard" ? "btn-dark" : ""
-                }`}
-                to="/dashboard"
-              >
-                Home
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div>
+      <img src={sellerProfile} width={139} />
+      <p>Sivali Factory</p>
+      <p>Joined on : 20 Feb 2020</p>
+    </div>
   );
 };
-
 export default NavbarDashboard;
